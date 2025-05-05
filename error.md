@@ -2,13 +2,13 @@
 
 ## Arch install
 
-### Install input
+### Arch install - Input
 
 #### ERROR 120: Invalid option (Valid: g, h, k, l, t, c, f, u, p, r, s, n, d, D, S, E)
 
 #### ERROR 121: Option requires an argument
 
-### Data validation
+### Arch install - Data validation
 
 #### ERROR 130: Default env file import failed
 
