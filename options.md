@@ -2,77 +2,76 @@
 
 ## Arch install
 
-### -i
+- -i
 
-Set drive to install arch linux to
+  Set drive to install arch linux to
 
-### -g
+- -g
 
-Set grub name. This is what the boot option is called
+  Set grub name. This is what the boot option is called
 
-### -h
+- -h
 
-Set hostname for the finished installation
+  Set hostname for the finished installation
 
-### -k
+- -k
 
-Set keyboard layout for the finished installation
+  Set keyboard layout for the finished installation
 
-### -l
+- -l
 
-Set language for the finished installation
+  Set language for the finished installation
 
-### -t
+- -t
 
-Set timezone for the finished installation
+  Set timezone for the finished installation
 
-### -c
+- -c
 
-Set password for encrypted drive for the finished installation
+  Set password for encrypted drive for the finished installation
 
-### -f
+- -f
 
-Set filesystem for the main partition
+  Set filesystem for the main partition
 
-#### Valid options
+### Valid options
 
-- btrfs
-- ext4
+  btrfs, ext4
 
-### -u
+- -u
 
-Set username for the default user
+  Set username for the default user
 
-### -p
+- -p
 
-Set password for the default user
+  Set password for the default user
 
-### -r
+- -r
 
-Set where the script is saved, ot where it should be downloaded to
+  Set where the script is saved, ot where it should be downloaded to
 
-### -s
+- -s
 
-Set where the script should be saved on the finished installation
+  Set where the script should be saved on the finished installation
 
-### -n
+- -n
 
-Disable automatic restart after finised install
+  Disable automatic restart after finised install
 
-### -d
+- -d
 
-Set dotfile git repository to download
+  Set dotfile git repository to download
 
-### -D
+- -D
 
-Set folder for local dotfiles
+  Set folder for local dotfiles
 
-### -S
+- -S
 
-Enable automatic install without any confirm.
+  Enable automatic install without any confirm.
 
-#### WARNING: THIS WILL DELETE EVERYTHING ON THE DISK SET WITH "-i"
+### WARNING: THIS WILL DELETE EVERYTHING ON THE DISK SET WITH "-i"
 
-### -E
+- -E
 
-Set environment file with options to use
+  Set environment file with options to use
