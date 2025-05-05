@@ -80,12 +80,12 @@
 
 - -i
 
-Set the drive to mount
+  Set the drive to mount
 
 - -c
 
-Set password used for encrypted drive
+  Set password used for encrypted drive
 
 - -f
 
-Set filesystem used for the main partition
+  Set filesystem used for the main partition
