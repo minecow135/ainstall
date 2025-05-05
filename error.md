@@ -65,3 +65,29 @@
 #### ERROR 187: Dotfiles need newer aInstall script (minor)
 
 #### ERROR 188: Dotfiles need newer aInstall script (patch)
+
+## Mount
+
+### Mount - Input
+
+#### ERROR 820: Invalid option '-$OPTARG' (Valid: i, c, p, f)
+
+#### ERROR 821: Option requires an argument
+
+### Mount - env import
+
+#### ERROR 830: Default env file import failed
+
+#### ERROR 831: Env file import failed
+
+### Mount - Input validation
+
+#### ERROR 850: Install drive not set (-i)
+
+#### ERROR 856: Filesys not set (-f)
+
+### Mount - Data validation
+
+#### ERROR 870: Install drive not valid (-i)
+
+#### ERROR 876: Filesys not valid (-f)
