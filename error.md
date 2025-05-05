@@ -8,11 +8,13 @@
 
 #### ERROR 121: Option requires an argument
 
-### Arch install - Data validation
+### Arch install - env import
 
 #### ERROR 130: Default env file import failed
 
 #### ERROR 131: Env file import failed
+
+### Arch install - Input validation
 
 #### ERROR 150: Install drive not set (-i)
 
@@ -35,6 +37,8 @@
 #### ERROR 159: Script run directory not set (-r)
 
 #### ERROR 160: Script directory not set (-s)
+
+### Arch install - Data validation
 
 #### ERROR 170: Install drive not valid (-i)
 
