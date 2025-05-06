@@ -19,7 +19,6 @@ while getopts ":i:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
     d) dotfilegit=$OPTARG ;;
     D) dotfilefolder=$OPTARG ;;
     S) script=true ;;
-    O) noopt=true ;;
     E) env=$OPTARG ;;
     :) echo "ERROR 121: Option '-$OPTARG' requires an argument" >&2; exit 121 ;;
     ?) echo "ERROR 120: Invalid option '-$OPTARG' (Valid: g, h, k, l, t, c, f, u, p, r, s, n, d, D, S, E)" >&2; exit 120 ;;
