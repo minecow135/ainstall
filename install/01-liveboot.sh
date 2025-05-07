@@ -76,9 +76,9 @@ fi
 
 if [[ -z ${drive} ]]
 then
-  if [[ ${ENV_DRIVE} ]]
+  if [[ ${ENV_INSTALL_DRIVE} ]]
   then
-    drive=${ENV_DRIVE}
+    drive=${ENV_INSTALL_DRIVE}
   elif [[ -z ${script} ]]
   then
     drives=$(lsblk --exclude 254 --nodeps --noheadings --output NAME)
@@ -99,9 +99,9 @@ fi
 
 if [[ -z ${grubname} ]]
 then
-  if [[ ${ENV_GRUBNAME} ]]
+  if [[ ${ENV_INSTALL_GRUBNAME} ]]
   then
-    grubname=${ENV_GRUBNAME}
+    grubname=${ENV_INSTALL_GRUBNAME}
   elif [[ -z ${script} ]]
   then
     echo "INPUT grubname"
@@ -114,9 +114,9 @@ fi
 
 if [[ -z ${hostname} ]]
 then
-  if [[ ${ENV_HOSTNAME} ]]
+  if [[ ${ENV_INSTALL_HOSTNAME} ]]
   then
-    hostname=${ENV_HOSTNAME}
+    hostname=${ENV_INSTALL_HOSTNAME}
   elif [[ -z ${script} ]]
   then
     echo "INPUT hostname"
@@ -129,9 +129,9 @@ fi
 
 if [[ -z ${keymap} ]]
 then
-  if [[ ${ENV_KEYMAP} ]]
+  if [[ ${ENV_INSTALL_KEYMAP} ]]
   then
-    keymap=${ENV_KEYMAP}
+    keymap=${ENV_INSTALL_KEYMAP}
   elif [[ -z ${script} ]]
   then
     echo "INPUT keymap"
@@ -153,9 +153,9 @@ keymap=$(localectl list-keymaps | grep -ix ${keymap})
 
 if [[ -z ${lang} ]]
 then
-  if [[ ${ENV_LANG} ]]
+  if [[ ${ENV_INSTALL_LANG} ]]
   then
-    lang=${ENV_LANG}
+    lang=${ENV_INSTALL_LANG}
   elif [[ -z ${script} ]]
   then
     echo "INPUT lang"
@@ -177,9 +177,9 @@ lang=$(cat /etc/locale.gen | cut -d ' ' -f1 | tr -d '#' | grep -i "^${lang}$")
 
 if [[ -z ${timezone} ]]
 then
-  if [[ ${ENV_TIMEZONE} ]]
+  if [[ ${ENV_INSTALL_TIMEZONE} ]]
   then
-    timezone=${ENV_TIMEZONE}
+    timezone=${ENV_INSTALL_TIMEZONE}
   elif [[ -z ${script} ]]
   then
     echo "INPUT timezone"
@@ -201,9 +201,9 @@ timezone=$(timedatectl list-timezones | grep -ix ${timezone})
 
 if [[ -z ${cryptpass} ]]
 then
-  if [[ ${ENV_CRYPTPASS} ]]
+  if [[ ${ENV_INSTALL_CRYPTPASS} ]]
   then
-    cryptpass=${ENV_CRYPTPASS}
+    cryptpass=${ENV_INSTALL_CRYPTPASS}
   elif [[ -z ${script} ]]
   then
     echo "INPUT cryptpass"
@@ -214,9 +214,9 @@ fi
 
 if [[ -z ${filesys} ]]
 then
-  if [[ ${ENV_FILESYS} ]]
+  if [[ ${ENV_INSTALL_FILESYS} ]]
   then
-    filesys=${ENV_FILESYS}
+    filesys=${ENV_INSTALL_FILESYS}
   elif [[ -z ${script} ]]
   then
     echo "INPUT filesys"
@@ -241,9 +241,9 @@ fi
 
 if [[ -z ${user} ]]
 then
-  if [[ ${ENV_USER} ]]
+  if [[ ${ENV_INSTALL_USER} ]]
   then
-    user=${ENV_USER}
+    user=${ENV_INSTALL_USER}
   elif [[ -z ${script} ]]
   then
     echo "INPUT user"
@@ -256,9 +256,9 @@ fi
 
 if [[ -z ${pass} ]]
 then
-  if [[ ${ENV_PASS} ]]
+  if [[ ${ENV_INSTALL_PASS} ]]
   then
-    pass=${ENV_PASS}
+    pass=${ENV_INSTALL_PASS}
   elif [[ -z ${script} ]]
   then
     echo "INPUT pass"
@@ -271,9 +271,9 @@ fi
 
 if [[ -z ${scriptrundir} ]]
 then
-  if [[ ${ENV_SCRIPTRUNDIR} ]]
+  if [[ ${ENV_INSTALL_SCRIPTRUNDIR} ]]
   then
-    scriptrundir=${ENV_SCRIPTRUNDIR}
+    scriptrundir=${ENV_INSTALL_SCRIPTRUNDIR}
   elif [[ -z ${script} ]]
   then
     echo "INPUT scriptrundir"
@@ -293,9 +293,9 @@ fi
 
 if [[ -z ${scriptdir} ]]
 then
-  if [[ ${ENV_SCRIPTDIR} ]]
+  if [[ ${ENV_INSTALL_SCRIPTDIR} ]]
   then
-    scriptdir=${ENV_SCRIPTDIR}
+    scriptdir=${ENV_INSTALL_SCRIPTDIR}
   elif [[ -z ${script} ]]
   then
     echo "INPUT scriptdir"
@@ -315,9 +315,9 @@ fi
 
 if [[ -z ${norestart} ]]
 then
-  if [[ ${ENV_NORESTART} ]]
+  if [[ ${ENV_INSTALL_NORESTART} ]]
   then
-    norestart=${ENV_NORESTART}
+    norestart=${ENV_INSTALL_NORESTART}
   elif [[ -z ${script} ]]
   then
     echo "INPUT norestart"
@@ -328,16 +328,16 @@ fi
 
 if [[ -z ${dotfilegit} ]]
 then
-  if [[ ${ENV_DOTFILEGIT} ]]
+  if [[ ${ENV_INSTALL_DOTFILEGIT} ]]
   then
-    dotfilegit=${ENV_DOTFILEGIT}
+    dotfilegit=${ENV_INSTALL_DOTFILEGIT}
   elif [[ -z ${script} ]]
   then
     if [[ -z ${dotfilefolder} ]]
     then
-      if [[ ${ENV_DOTFILEFOLDER} ]]
+      if [[ ${ENV_INSTALL_DOTFILEFOLDER} ]]
       then
-        dotfilefolder=${ENV_DOTFILEFOLDER}
+        dotfilefolder=${ENV_INSTALL_DOTFILEFOLDER}
       else
         echo "INPUT dotfilegit"
         echo "INPUT dotfilefolder"
