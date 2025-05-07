@@ -8,6 +8,10 @@
 
 #### ERROR 121: Option requires an argument
 
+### Arch install - Verify global variables
+
+#### ERROR 125: aInstall version not found
+
 ### Arch install - env import
 
 #### ERROR 130: Default env file import failed

@@ -32,6 +32,11 @@ AINSTALL_VERSION=v0.1.0
 
 ##################################### GLOBAL SET VARIABLES #####################################
 
+if [ ! ${AINSTALL_VERSION} ]
+then
+  echo "ERROR 125: aInstall version not found" >&2; exit 125
+fi
+
 MAJOR=$(echo $AINSTALL_VERSION | tr -d "v" | cut -d "." -f1)
 MINOR=$(echo $AINSTALL_VERSION | tr -d "v" | cut -d "." -f2)
 PATCH=$(echo $AINSTALL_VERSION | tr -d "v" | cut -d "." -f3)
