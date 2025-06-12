@@ -96,6 +96,8 @@ else
   echo "ERROR 79: Script run directory not found (-r)" >&2; exit 79
 fi
 
+##################################### RUN SCRIPT PART #####################################
+
 if [ ! $1 ]
 then
   echo "ERROR 90: Command part not set" >&2; exit 90
