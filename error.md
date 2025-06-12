@@ -1,5 +1,21 @@
 # Error messages
 
+## Main
+
+### Main - Input
+
+#### ERROR 5: Command part not set
+
+### Main - Verify global variables
+
+#### ERROR 25: aInstall version not found
+
+### Main - Run part
+
+#### ERROR 90: Command part not set
+
+#### ERROR 95: Command part invalid
+
 ## Arch install
 
 ### Arch install - Input
