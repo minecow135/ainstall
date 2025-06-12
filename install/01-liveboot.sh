@@ -390,15 +390,32 @@ then
   fi
 fi
 
+##################################### UNMOUNT OLD PARTITIONS #####################################
+
+# clear old partitions
+if [[ $(swapon --show) ]]
+then
+  swapoff --all
+fi
+
+if [[ $(findmnt -M ${MOUNT}) ]]
+then
+  umount -R ${MOUNT}
+fi
+
+if [[ $(blkid /dev/${drive}2 -o export | awk '/^TYPE/ {print $1}' | cut -d = -f2) == "crypto_LUKS" ]]
+then
+  cryptsetup close /dev/mapper/root
+fi
+
+if [[ -e /dev/sda1 ]]
+then
+  wipefs --force --all /dev/${drive}
+fi
+
 ##################################### SCRIPT #####################################
 
 loadkeys ${keymap}
-
-# clear old partitions
-swapoff ${MOUNT}/swap/swapfile
-umount -R ${MOUNT}
-cryptsetup close /dev/mapper/root
-wipefs --force --all /dev/${drive}
 
 # get pc details
 swapsize=$(awk '/MemTotal/ {print int($2/1000000+0.5)*2}' /proc/meminfo)
