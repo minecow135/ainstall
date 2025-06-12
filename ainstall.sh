@@ -59,7 +59,7 @@ then
 elif [[ $script ]]
 then
   {
-    env=$(readlink -f ./defaults.env)
+    env=$(readlink -f ./config/defaults.env)
     source ${env}
   } || {
     echo "ERROR 30: Default env file import failed" >&2; exit 30
