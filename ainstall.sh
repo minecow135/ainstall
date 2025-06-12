@@ -76,9 +76,9 @@ fi
 
 if [[ -z ${scriptrundir} ]]
 then
-  if [[ ${ENV_SCRIPTRUNDIR} ]]
+  if [[ ${ENV_INSTALL_SCRIPTRUNDIR} ]]
   then
-    scriptrundir=${ENV_SCRIPTRUNDIR}
+    scriptrundir=${ENV_INSTALL_SCRIPTRUNDIR}
   elif [[ -z ${script} ]]
   then
     echo "INPUT scriptrundir"
