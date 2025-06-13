@@ -166,9 +166,9 @@ fi
 
 if [[ -z ${bootsize} ]]
 then
-  if [[ ${ENV_INSTALL_DRIVE} ]]
+  if [[ ${ENV_INSTALL_BOOTSIZE} ]]
   then
-    bootsize=${ENV_INSTALL_DRIVE}
+    bootsize=${ENV_INSTALL_BOOTSIZE}
   elif [[ -z ${script} ]]
   then
     echo "INPUT bootsize"
