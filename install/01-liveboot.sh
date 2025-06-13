@@ -72,7 +72,7 @@ fi
 if [ ${dotfilegit} ]
 then
   {
-    folder=./dots/
+    folder=${scriptrundir}/dots
     rm -r ${folder}
     echo "cloning dotfiles"
     git clone --quiet ${dotfilegit} ${folder}
