@@ -179,7 +179,7 @@ fi
 
 # Check if drive is valid
 
-if [ ! ${bootsize} =~ ^[0-9]+$  ]
+if [[ ! ${bootsize} =~ ^[0-9]+$  ]]
 then
   echo "ERROR 171: Boot partition size not valid (-b)" >&2; exit 171
 fi
