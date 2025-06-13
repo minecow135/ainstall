@@ -124,6 +124,13 @@ then
   } || {
     echo "ERROR 141: Env file import failed" >&2; exit 141
   }
+elif [[ -f ${dotfilefolder}/env/.env ]]
+then
+  {
+    source ${dotfilefolder}/env/.env
+  } || {
+    echo "ERROR 142: Dotfile env file import failed" >&2; exit 140
+  }
 elif [[ $script ]]
 then
   {

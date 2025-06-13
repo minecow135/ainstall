@@ -64,6 +64,8 @@
 
 #### ERROR 141: Env file import failed
 
+#### ERROR 142: Dotfile env file import failed
+
 ### Arch install - Input validation
 
 #### ERROR 150: Install drive not set (-i)
