@@ -415,8 +415,6 @@ fi
 
 ##################################### SCRIPT #####################################
 
-loadkeys ${keymap}
-
 # get pc details
 swapsize=$(awk '/MemTotal/ {print int($2/1000000+0.5)*2}' /proc/meminfo)
 
