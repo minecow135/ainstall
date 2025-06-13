@@ -127,6 +127,7 @@ fi
 if [[ ${env} ]]
 then
   {
+    echo importing manualy selected env file
     source ${env}
   } || {
     echo "ERROR 141: Env file import failed" >&2; exit 141
@@ -134,6 +135,7 @@ then
 elif [[ -f ${DOTFILEDEST}/env/.env ]]
 then
   {
+    echo importing env file from dotfiles
     source ${DOTFILEDEST}/env/.env
   } || {
     echo "ERROR 142: Dotfile env file import failed" >&2; exit 140
@@ -141,6 +143,7 @@ then
 elif [[ $script ]]
 then
   {
+    echo importing default env file
     source "./defaults.env"
   } || {
     echo "ERROR 140: Default env file import failed" >&2; exit 140
