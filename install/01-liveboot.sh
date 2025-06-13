@@ -77,7 +77,7 @@ then
     git clone --quiet ${dotfilegit} ${folder}
     dotfilefolder=${folder}
   } || {
-    echo "ERROR 180: Dotfile link not valid (-d)" >&2; exit 180
+    echo "ERROR 130: Dotfile link not valid (-d)" >&2; exit 130
   }
 fi
 
@@ -85,15 +85,15 @@ if [ ${dotfilefolder} ]
 then
   if [ ! -d $dotfilefolder ]
   then
-    echo "ERROR 182: Dotfile folder not found (-d/-D)" >&2; exit 182
+    echo "ERROR 132: Dotfile folder not found (-d/-D)" >&2; exit 132
   else
     if [ ! -e ${dotfilefolder}/AINSTALL ] || ! source ${dotfilefolder}/AINSTALL
     then
-      echo "ERROR 183: Dotfile folder not valid (-d/-D)" >&2; exit 183
+      echo "ERROR 133: Dotfile folder not valid (-d/-D)" >&2; exit 133
     else
       if [ ! $AINSTALL_VERSION_NEEDED ]
       then
-        echo "ERROR 184: Needed aInstall version not specified" >&2; exit 184
+        echo "ERROR 134: Needed aInstall version not specified" >&2; exit 134
       else
         dotfile_major=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f1)
         dotfile_minor=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f2)
@@ -101,13 +101,13 @@ then
 
         if [ ${MAJOR} -lt ${dotfile_major} ]
         then
-          echo "ERROR 186: Dotfiles need newer aInstall script (major)" >&2; exit 186
+          echo "ERROR 136: Dotfiles need newer aInstall script (major)" >&2; exit 136
         elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -lt ${dotfile_minor} ]
         then
-          echo "ERROR 187: Dotfiles need newer aInstall script (minor)" >&2; exit 187
+          echo "ERROR 137: Dotfiles need newer aInstall script (minor)" >&2; exit 137
         elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -eq ${dotfile_minor} ] && [ ${PATCH} -lt ${dotfile_patch} ]
         then
-          echo "ERROR 188: Dotfiles need newer aInstall script (patch)" >&2; exit 188
+          echo "ERROR 138: Dotfiles need newer aInstall script (patch)" >&2; exit 138
         fi
       fi
     fi
@@ -121,14 +121,14 @@ then
   {
     source ${env}
   } || {
-    echo "ERROR 131: Env file import failed" >&2; exit 131
+    echo "ERROR 141: Env file import failed" >&2; exit 141
   }
 elif [[ $script ]]
 then
   {
     source "./defaults.env"
   } || {
-    echo "ERROR 130: Default env file import failed" >&2; exit 130
+    echo "ERROR 140: Default env file import failed" >&2; exit 140
   }
 fi
 
@@ -172,7 +172,7 @@ then
   then
     echo "INPUT grubname"
   else
-    echo "ERROR 151: Grub name not set (-g)" >&2; exit 151
+    echo "ERROR 152: Grub name not set (-g)" >&2; exit 152
   fi
 fi
 
@@ -187,7 +187,7 @@ then
   then
     echo "INPUT hostname"
   else
-    echo "ERROR 152: Hostname not set (-h)" >&2; exit 152
+    echo "ERROR 153: Hostname not set (-h)" >&2; exit 153
   fi
 fi
 
@@ -202,7 +202,7 @@ then
   then
     echo "INPUT keymap"
   else
-    echo "ERROR 153: Keymap not set (-k)" >&2; exit 153
+    echo "ERROR 154: Keymap not set (-k)" >&2; exit 154
   fi
 fi
 
@@ -210,7 +210,7 @@ fi
 
 if [ ! $(localectl list-keymaps | grep -ix ${keymap}) ]
 then
-  echo "ERROR 173: Keymap not valid (-k)" >&2; exit 173
+  echo "ERROR 174: Keymap not valid (-k)" >&2; exit 174
 fi
 
 keymap=$(localectl list-keymaps | grep -ix ${keymap})
@@ -226,7 +226,7 @@ then
   then
     echo "INPUT lang"
   else
-    echo "ERROR 154: Language not set (-l)" >&2; exit 154
+    echo "ERROR 155: Language not set (-l)" >&2; exit 155
   fi
 fi
 
@@ -234,7 +234,7 @@ fi
 
 if [ ! $(cat /etc/locale.gen | cut -d ' ' -f1 | tr -d '#' | grep -i "^${lang}$") ]
 then
-  echo "ERROR 174: Language not valid (-l)" >&2; exit 174
+  echo "ERROR 175: Language not valid (-l)" >&2; exit 175
 fi
 
 lang=$(cat /etc/locale.gen | cut -d ' ' -f1 | tr -d '#' | grep -i "^${lang}$")
@@ -250,7 +250,7 @@ then
   then
     echo "INPUT timezone"
   else
-    echo "ERROR 155: Timezone not set (-t)" >&2; exit 155
+    echo "ERROR 156: Timezone not set (-t)" >&2; exit 156
   fi
 fi
 
@@ -258,7 +258,7 @@ fi
 
 if [ ! $(timedatectl list-timezones | grep -ix ${timezone}) ]
 then
-  echo "ERROR 175: Timezone not valid (-t)" >&2; exit 175
+  echo "ERROR 176: Timezone not valid (-t)" >&2; exit 176
 fi
 
 timezone=$(timedatectl list-timezones | grep -ix ${timezone})
@@ -287,7 +287,7 @@ then
   then
     echo "INPUT filesys"
   else
-    echo "ERROR 156: Filesys not set (-f)" >&2; exit 156
+    echo "ERROR 157: Filesys not set (-f)" >&2; exit 157
   fi
 fi
 
@@ -300,7 +300,7 @@ filesys=$(echo "$filesys" | tr '[:upper:]' '[:lower:]')
 
 if [[ ! ${filesystems[*]} =~ (^|[[:space:]])"$filesys"($|[[:space:]]) ]];
 then
-  echo "ERROR 176: Filesys not valid (-f)" >&2; exit 176
+  echo "ERROR 177: Filesys not valid (-f)" >&2; exit 177
 fi
 
 # Get user
@@ -314,7 +314,7 @@ then
   then
     echo "INPUT user"
   else
-    echo "ERROR 157: Username not set (-u)" >&2; exit 157
+    echo "ERROR 158: Username not set (-u)" >&2; exit 158
   fi
 fi
 
@@ -329,7 +329,7 @@ then
   then
     echo "INPUT pass"
   else
-    echo "ERROR 158: Password not set (-p)" >&2; exit 158
+    echo "ERROR 159: Password not set (-p)" >&2; exit 159
   fi
 fi
 
@@ -344,7 +344,7 @@ then
   then
     echo "INPUT scriptrundir"
   else
-    echo "ERROR 159: Script run directory not set (-r)" >&2; exit 159
+    echo "ERROR 160: Script run directory not set (-r)" >&2; exit 160
   fi
 fi
 
@@ -352,7 +352,7 @@ fi
 
 if [[ ! -d ${scriptrundir} ]]
 then
-  echo "ERROR 179: Script run directory not found (-r)" >&2; exit 179
+  echo "ERROR 180: Script run directory not found (-r)" >&2; exit 180
 fi
 
 # Get scriptdir
@@ -366,7 +366,7 @@ then
   then
     echo "INPUT scriptdir"
   else
-    echo "ERROR 160: Script directory not set (-s)" >&2; exit 160
+    echo "ERROR 161: Script directory not set (-s)" >&2; exit 161
   fi
 fi
 
@@ -374,7 +374,7 @@ fi
 
 if [[ ! $scriptdir =~ ^/. ]]
 then
-  echo "ERROR 170: Script directory not valid (-s)" >&2; exit 170
+  echo "ERROR 171: Script directory not valid (-s)" >&2; exit 171
 fi
 
 # Get norestart
