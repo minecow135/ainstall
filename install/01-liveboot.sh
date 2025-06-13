@@ -77,6 +77,7 @@ then
     echo "cloning dotfiles"
     git clone --quiet ${dotfilegit} ${DOTFILEDEST}
     dotfilefolder=${DOTFILEDEST}
+    dotfiles=true
   } || {
     echo "ERROR 130: Dotfile link not valid (-d)" >&2; exit 130
   }
@@ -86,30 +87,35 @@ if [ ${dotfilefolder} ]
 then
   if [ ! -d $dotfilefolder ]
   then
-    echo "ERROR 132: Dotfile folder not found (-d/-D)" >&2; exit 132
+    echo "ERROR 132: Dotfile folder not found (-D)" >&2; exit 132
   else
-    if [ ! -e ${dotfilefolder}/AINSTALL ] || ! source ${dotfilefolder}/AINSTALL
-    then
-      echo "ERROR 133: Dotfile folder not valid (-d/-D)" >&2; exit 133
-    else
-      if [ ! $AINSTALL_VERSION_NEEDED ]
-      then
-        echo "ERROR 134: Needed aInstall version not specified" >&2; exit 134
-      else
-        dotfile_major=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f1)
-        dotfile_minor=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f2)
-        dotfile_patch=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f3)
+    dotfiles=true
+  fi
+fi
 
-        if [ ${MAJOR} -lt ${dotfile_major} ]
-        then
-          echo "ERROR 136: Dotfiles need newer aInstall script (major)" >&2; exit 136
-        elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -lt ${dotfile_minor} ]
-        then
-          echo "ERROR 137: Dotfiles need newer aInstall script (minor)" >&2; exit 137
-        elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -eq ${dotfile_minor} ] && [ ${PATCH} -lt ${dotfile_patch} ]
-        then
-          echo "ERROR 138: Dotfiles need newer aInstall script (patch)" >&2; exit 138
-        fi
+if [ ${dotfiles} ]
+then
+  if [ ! -e ${dotfilefolder}/AINSTALL ] || ! source ${dotfilefolder}/AINSTALL
+  then
+    echo "ERROR 133: Dotfile folder not valid (-d/-D)" >&2; exit 133
+  else
+    if [ ! $AINSTALL_VERSION_NEEDED ]
+    then
+      echo "ERROR 134: Needed aInstall version not specified (-d/-D)" >&2; exit 134
+    else
+      dotfile_major=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f1)
+      dotfile_minor=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f2)
+      dotfile_patch=$(echo $AINSTALL_VERSION_NEEDED | tr -d "v" | cut -d "." -f3)
+
+      if [ ${MAJOR} -lt ${dotfile_major} ]
+      then
+        echo "ERROR 136: Dotfiles need newer aInstall script (major) (-d/-D)" >&2; exit 136
+      elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -lt ${dotfile_minor} ]
+      then
+        echo "ERROR 137: Dotfiles need newer aInstall script (minor) (-d/-D)" >&2; exit 137
+      elif [ ${MAJOR} -eq ${dotfile_major} ] && [ ${MINOR} -eq ${dotfile_minor} ] && [ ${PATCH} -lt ${dotfile_patch} ]
+      then
+        echo "ERROR 138: Dotfiles need newer aInstall script (patch) (-d/-D)" >&2; exit 138
       fi
     fi
   fi

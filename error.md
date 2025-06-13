@@ -46,17 +46,17 @@
 
 #### ERROR 130: Dotfile link not valid (-d)
 
-#### ERROR 132: Dotfile folder not found (-d/-D)
+#### ERROR 132: Dotfile folder not found (-D)
 
 #### ERROR 133: Dotfile folder not valid (-d/-D)
 
-#### ERROR 134: Needed aInstall version not specified
+#### ERROR 134: Needed aInstall version not specified (-d/-D)
 
-#### ERROR 136: Dotfiles need newer aInstall script (major)
+#### ERROR 136: Dotfiles need newer aInstall script (major) (-d/-D)
 
-#### ERROR 137: Dotfiles need newer aInstall script (minor)
+#### ERROR 137: Dotfiles need newer aInstall script (minor) (-d/-D)
 
-#### ERROR 138: Dotfiles need newer aInstall script (patch)
+#### ERROR 138: Dotfiles need newer aInstall script (patch) (-d/-D)
 
 ### Arch install - env import
 
