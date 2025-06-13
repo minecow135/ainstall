@@ -89,6 +89,9 @@ then
   then
     echo "ERROR 132: Dotfile folder not found (-D)" >&2; exit 132
   else
+    rm -r ${DOTFILEDEST}
+    cp ${dotfilefolder} ${DOTFILEDEST}
+    dotfilefolder=${DOTFILEDEST}
     dotfiles=true
   fi
 fi
