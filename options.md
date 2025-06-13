@@ -1,10 +1,30 @@
 # Options
 
+## Main
+
+- -r | --scriptrundir
+  
+  Set where the script is saved, ot where it should be downloaded to
+
+- -E | --env
+  
+  Set environment file with options to use
+
+- -S | --script
+  
+  Enable automatic install without any confirm.
+
+  ### WARNING: THIS WILL RUN THE SCRIPT WITH NO CONFIRMATION. MAKE SURE TO DOUBLE CHECK EVRY INPUT
+
 ## Arch install
 
 - -i
 
   Set drive to install arch linux to
+
+- -b
+  
+  Set the size of the boot partition
 
 - -g
 
@@ -34,9 +54,10 @@
 
   Set filesystem for the main partition
 
-### Valid options
+  ### Valid options
 
-  btrfs, ext4
+  - btrfs
+  - ext4
 
 - -u
 
@@ -45,10 +66,6 @@
 - -p
 
   Set password for the default user
-
-- -r
-
-  Set where the script is saved, ot where it should be downloaded to
 
 - -s
 
@@ -65,16 +82,6 @@
 - -D
 
   Set folder for local dotfiles
-
-- -S
-
-  Enable automatic install without any confirm.
-
-### WARNING: THIS WILL DELETE EVERYTHING ON THE DISK SET WITH "-i"
-
-- -E
-
-  Set environment file with options to use
 
 ## Mount
 
