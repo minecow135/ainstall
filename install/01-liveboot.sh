@@ -76,7 +76,6 @@ then
     rm -r ${DOTFILEDEST}
     echo "cloning dotfiles"
     git clone --quiet ${dotfilegit} ${DOTFILEDEST}
-    dotfilefolder=${DOTFILEDEST}
     dotfiles=true
   } || {
     echo "ERROR 130: Dotfile link not valid (-d)" >&2; exit 130
@@ -91,14 +90,13 @@ then
   else
     rm -r ${DOTFILEDEST}
     cp ${dotfilefolder} ${DOTFILEDEST}
-    dotfilefolder=${DOTFILEDEST}
     dotfiles=true
   fi
 fi
 
 if [ ${dotfiles} ]
 then
-  if [ ! -e ${dotfilefolder}/AINSTALL ] || ! source ${dotfilefolder}/AINSTALL
+  if [ ! -e ${DOTFILEDEST}/AINSTALL ] || ! source ${DOTFILEDEST}/AINSTALL
   then
     echo "ERROR 133: Dotfile folder not valid (-d/-D)" >&2; exit 133
   else
@@ -133,10 +131,10 @@ then
   } || {
     echo "ERROR 141: Env file import failed" >&2; exit 141
   }
-elif [[ -f ${dotfilefolder}/env/.env ]]
+elif [[ -f ${DOTFILEDEST}/env/.env ]]
 then
   {
-    source ${dotfilefolder}/env/.env
+    source ${DOTFILEDEST}/env/.env
   } || {
     echo "ERROR 142: Dotfile env file import failed" >&2; exit 140
   }
@@ -539,12 +537,9 @@ sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
 arch-chroot ${MOUNT} sh ${scriptdir}/install/parts/02-install.sh -u ${user} -p ${pass} -g ${grubname} -t ${timezone}
 
-if [ ${dotfilegit} ]
+if [ ${dotfiles} ]
 then
-  echo "Dotfile git: ${dotfilegit}"
-elif [ ${dotfilefolder} ]
-then
-  echo "Dotfile folder: ${dotfilefolder}"
+  echo "Dotfile folder: ${DOTFILEDEST}"
 fi
 
 if [[ -z ${norestart} ]]
