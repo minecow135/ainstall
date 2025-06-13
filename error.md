@@ -4,11 +4,19 @@
 
 ### Main - Input
 
-#### ERROR 5: Command part not set
+#### ERROR 5: Script directory missing
+
+#### ERROR 6: env file missing
 
 ### Main - Verify global variables
 
 #### ERROR 25: aInstall version not found
+
+### Main - Input 
+
+#### ERROR 59: Script run directory not set (-r)
+
+#### ERROR 79: Script run directory not found (-r)
 
 ### Main - Run part
 
