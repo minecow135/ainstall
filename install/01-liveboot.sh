@@ -421,7 +421,7 @@ swapsize=$(awk '/MemTotal/ {print int($2/1000000+0.5)*2}' /proc/meminfo)
 blockdev --getss /dev/${drive}
 blockdev --getsz /dev/${drive}
 
-sfdisk --force --wipe always /dev/${drive} < ${scriptrundir}/install/parts/disk
+parted -s "/dev/${drive}" mklabel msdos mkpart primary fat32 1 1G mkpart primary ext4 1G 100% set 1 boot on
 
 drive2=${drive}2
 
