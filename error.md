@@ -12,6 +12,12 @@
 
 #### ERROR 25: aInstall version not found
 
+### Main - env import
+
+#### ERROR 30: Default env file import failed
+
+#### ERROR 31: Env file import failed
+
 ### Main - Input 
 
 #### ERROR 59: Script run directory not set (-r)
