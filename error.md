@@ -20,7 +20,7 @@
 
 ### Arch install - Input
 
-#### ERROR 120: Invalid option (Valid: i, g, h, k, l, t, c, f, u, p, s, n, d, D)
+#### ERROR 120: Invalid option (Valid: i, b, g, h, k, l, t, c, f, u, p, s, n, d, D)
 
 #### ERROR 121: Option requires an argument
 
@@ -54,6 +54,8 @@
 
 #### ERROR 150: Install drive not set (-i)
 
+#### ERROR 151: Boot partition size not set (-b)
+
 #### ERROR 152: Grub name not set (-g)
 
 #### ERROR 153: Hostname not set (-h)
@@ -77,6 +79,8 @@
 ### Arch install - Data validation
 
 #### ERROR 170: Install drive not valid (-i)
+
+#### ERROR 171: Boot partition size not valid (-b)
 
 #### ERROR 174: Keymap not valid (-k)
 

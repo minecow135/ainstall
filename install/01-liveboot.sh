@@ -1,9 +1,10 @@
 #!/bin/sh
 set -e
 
-while getopts ":i:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
+while getopts ":i:b:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
   case $opt in
     i) drive=$OPTARG ;;
+    b) bootsize=$OPTARG ;;
     g) grubname=$OPTARG ;;
     h) hostname=$OPTARG ;;
     k) keymap=$OPTARG ;;
@@ -18,7 +19,7 @@ while getopts ":i:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
     d) dotfilegit=$OPTARG ;;
     D) dotfilefolder=$OPTARG ;;
     :) echo "ERROR 121: Option '-$OPTARG' requires an argument" >&2; exit 121 ;;
-    ?) echo "ERROR 120: Invalid option '-$OPTARG' (Valid: i, g, h, k, l, t, c, f, u, p, s, n, d, D)" >&2; exit 120 ;;
+    ?) echo "ERROR 120: Invalid option '-$OPTARG' (Valid: i, b, g, h, k, l, t, c, f, u, p, s, n, d, D)" >&2; exit 120 ;;
   esac
 done
 
@@ -159,6 +160,28 @@ fi
 if [ ! $(ls /dev/${drive}) ]
 then
   echo "ERROR 170: Install drive not valid (-i)" >&2; exit 170
+fi
+
+# Get boot size
+
+if [[ -z ${bootsize} ]]
+then
+  if [[ ${ENV_INSTALL_DRIVE} ]]
+  then
+    bootsize=${ENV_INSTALL_DRIVE}
+  elif [[ -z ${script} ]]
+  then
+    echo "INPUT bootsize"
+  else
+    echo "ERROR 151: Boot partition size not set (-b)" >&2; exit 151
+  fi
+fi
+
+# Check if drive is valid
+
+if [ ! ${bootsize} =~ ^[0-9]+$  ]
+then
+  echo "ERROR 171: Boot partition size not valid (-b)" >&2; exit 171
 fi
 
 # Get grubname
@@ -421,7 +444,7 @@ swapsize=$(awk '/MemTotal/ {print int($2/1000000+0.5)*2}' /proc/meminfo)
 blockdev --getss /dev/${drive}
 blockdev --getsz /dev/${drive}
 
-parted -s "/dev/${drive}" mklabel msdos mkpart primary fat32 1 1G mkpart primary ext4 1G 100% set 1 boot on
+parted -s "/dev/${drive}" mklabel msdos mkpart primary fat32 1 ${bootsize}M mkpart primary ext4 ${bootsize}M 100% set 1 boot on
 
 drive2=${drive}2
 
