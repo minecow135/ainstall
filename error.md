@@ -20,7 +20,7 @@
 
 ### Arch install - Input
 
-#### ERROR 120: Invalid option (Valid: g, h, k, l, t, c, f, u, p, r, s, n, d, D, S, E)
+#### ERROR 120: Invalid option (Valid: i, g, h, k, l, t, c, f, u, p, s, n, d, D)
 
 #### ERROR 121: Option requires an argument
 
