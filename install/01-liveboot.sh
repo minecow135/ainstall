@@ -26,6 +26,7 @@ done
 ##################################### STATIC VARIABLES #####################################
 
 MOUNT=/mnt/os
+DOTFILEDEST=${scriptrundir}/dots
 
 ##################################### GLOBAL SET VARIABLES #####################################
 
@@ -72,11 +73,10 @@ fi
 if [ ${dotfilegit} ]
 then
   {
-    folder=${scriptrundir}/dots
-    rm -r ${folder}
+    rm -r ${DOTFILEDEST}
     echo "cloning dotfiles"
-    git clone --quiet ${dotfilegit} ${folder}
-    dotfilefolder=${folder}
+    git clone --quiet ${dotfilegit} ${DOTFILEDEST}
+    dotfilefolder=${DOTFILEDEST}
   } || {
     echo "ERROR 130: Dotfile link not valid (-d)" >&2; exit 130
   }
