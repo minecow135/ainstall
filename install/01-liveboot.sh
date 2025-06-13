@@ -441,9 +441,6 @@ fi
 # get pc details
 swapsize=$(awk '/MemTotal/ {print int($2/1000000+0.5)*2}' /proc/meminfo)
 
-blockdev --getss /dev/${drive}
-blockdev --getsz /dev/${drive}
-
 parted -s "/dev/${drive}" mklabel msdos mkpart primary fat32 1 ${bootsize}M mkpart primary ext4 ${bootsize}M 100% set 1 boot on
 
 drive2=${drive}2
