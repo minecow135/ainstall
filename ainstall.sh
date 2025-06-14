@@ -108,10 +108,10 @@ export AINSTALL_VERSION scriptrundir script env
 
 case ${part} in
   "archinstall")
-    sh install/01-liveboot.sh $@
+    sh scripts/install/01-liveboot.sh $@
     ;;
   "mount")
-    sh adm/mount.sh $@
+    sh scripts/adm/mount.sh $@
     ;;
   *)
     echo "ERROR 95: Command part invalid" >&2; exit 95
