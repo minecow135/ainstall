@@ -144,7 +144,7 @@ elif [[ $script ]]
 then
   {
     echo importing default env file
-    source "./defaults.env"
+    source "${scriptrundir}/config/defaults.env"
   } || {
     echo "ERROR 140: Default env file import failed" >&2; exit 140
   }
