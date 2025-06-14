@@ -15,7 +15,7 @@ while [ : ]; do
     -E | --env)
       if [ $2 ]
       then
-        env=$2
+        env=$(readlink -f $2)
         shift 2
       else
         echo "ERROR 6: env file missing" >&2; exit 6
@@ -50,7 +50,6 @@ PATCH=$(echo $AINSTALL_VERSION | tr -d "v" | cut -d "." -f3)
 
 if [[ ${env} ]]
 then
-  env=$(readlink -f ${env})
   {
     source ${env}
   } || {
@@ -59,8 +58,7 @@ then
 elif [[ $script ]]
 then
   {
-    env=$(readlink -f ./config/defaults.env)
-    source ${env}
+    source ./config/defaults.env
   } || {
     echo "ERROR 30: Default env file import failed" >&2; exit 30
   }
