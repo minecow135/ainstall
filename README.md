@@ -2,6 +2,8 @@
 
 Arch install script with app and dotfile install
 
-## For command line options, see [options.md](options.md)
+## Documentation
 
-## For error messages, see [error.md](error.md)
+### For command line options, see [options.md](docs/options.md)
+
+### For error messages, see [error.md](docs/error.md)
