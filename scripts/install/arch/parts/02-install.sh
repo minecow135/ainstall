@@ -40,7 +40,7 @@ then
   mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak
   cmd="sh ${scriptrundir}/ainstall.sh"
 
-  cmd+=installarchafter
+  cmd+=" installarchafter"
   
   if [[ ${norestart} ]]
   then
