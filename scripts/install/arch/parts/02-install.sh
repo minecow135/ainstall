@@ -22,8 +22,16 @@ hwclock --systohc
 
 locale-gen
 
-groupadd sudo
-groupadd wheel
+if [[ ! $(getent group sudo) ]]
+then
+  groupadd sudo
+fi 
+
+if [[ ! $(getent group wheel) ]]
+then
+  groupadd wheel
+fi 
+
 useradd -m -G sudo -s /usr/bin/bash ${USER}
 echo ${PASS} | passwd -s ${USER}
 
