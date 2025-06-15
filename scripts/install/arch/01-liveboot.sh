@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-while getopts ":i:b:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
+while getopts ":i:b:g:h:k:l:t:c:f:u:p:r:s:nNd:D:SE:" opt; do
   case $opt in
     i) drive=$OPTARG ;;
     b) bootsize=$OPTARG ;;
@@ -16,10 +16,11 @@ while getopts ":i:b:g:h:k:l:t:c:f:u:p:r:s:nd:D:SE:" opt; do
     p) pass=$OPTARG ;;
     s) scriptdir=$OPTARG ;;
     n) norestart=true ;;
+    N) autorun=true ;;
     d) dotfilegit=$OPTARG ;;
     D) dotfilefolder=$OPTARG ;;
     :) echo "ERROR 121: Option '-$OPTARG' requires an argument" >&2; exit 121 ;;
-    ?) echo "ERROR 120: Invalid option '-$OPTARG' (Valid: i, b, g, h, k, l, t, c, f, u, p, s, n, d, D)" >&2; exit 120 ;;
+    ?) echo "ERROR 120: Invalid option '-$OPTARG' (Valid: i, b, g, h, k, l, t, c, f, u, p, s, n, N, d, D)" >&2; exit 120 ;;
   esac
 done
 
@@ -430,6 +431,19 @@ then
   fi
 fi
 
+# Get autorun
+
+if [[ -z ${autorun} ]]
+then
+  if [[ ${ENV_INSTALL_AUTORUN} ]]
+  then
+    autorun=${ENV_INSTALL_AUTORUN}
+  elif [[ -z ${script} ]]
+  then
+    echo "INPUT autorun"
+  fi
+fi
+
 ##################################### UNMOUNT OLD PARTITIONS #####################################
 
 # clear old partitions
@@ -538,7 +552,20 @@ sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' ${MOUNT}/etc/sudoers
 sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' ${MOUNT}/etc/sudoers
 
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
-arch-chroot ${MOUNT} sh ${scriptdir}/scripts/install/arch/parts/02-install.sh -u ${user} -p ${pass} -g ${grubname} -t ${timezone}
+
+cmd="sh ${scriptdir}/scripts/install/arch/parts/02-install.sh -r ${scriptrundir} -u ${user} -p ${pass} -g ${grubname} -t ${timezone}"
+
+if [[ ${norestart} ]]
+then
+  cmd+=" -n"
+fi
+
+if [[ ${autorun} ]]
+then
+  cmd+=" -N"
+fi
+
+arch-chroot ${MOUNT} ${cmd}
 
 if [ ${dotfiles} ]
 then

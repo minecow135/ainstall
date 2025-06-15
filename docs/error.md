@@ -108,6 +108,14 @@
 
 #### ERROR 180: Script run directory not found (-r)
 
+## Arch install
+
+### Arch install - Input
+
+#### ERROR 220: Invalid option (Valid: i, b, g, h, k, l, t, c, f, u, p, s, n, N, d, D)
+
+#### ERROR 221: Option requires an argument
+
 ## Mount
 
 ### Mount - Input

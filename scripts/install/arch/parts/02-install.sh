@@ -1,13 +1,17 @@
 #!/bin/sh
+set -e
 
-while getopts ":t:u:p:g:" opt; do
+while getopts ":r:t:u:p:Ng:" opt; do
   case $opt in
+    r) scriptrundir=$OPTARG ;;
     t) TIMEZONE=$OPTARG ;;
     u) USER=$OPTARG ;;
     p) PASS=$OPTARG ;;
+    n) norestart=true ;;
+    N) autorun=true ;;
     g) GRUBNAME=$OPTARG ;;
     :) echo "ERROR: Option '-$OPTARG' requires an argument" >&2; exit 1 ;;
-    ?) echo "ERROR: Invalid option '-$OPTARG' (Valid: t, u, p, g)" >&2; exit 1 ;;
+    ?) echo "ERROR: Invalid option '-$OPTARG' (Valid: r, t, u, p, N, g)" >&2; exit 1 ;;
   esac
 done
 
@@ -22,6 +26,28 @@ groupadd sudo
 groupadd wheel
 useradd -m -G sudo -s /usr/bin/bash ${USER}
 echo ${PASS} | passwd -s ${USER}
+
+if [[ ${autorun} ]]
+then
+  mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak
+  cmd="sh ${scriptrundir}/ainstall.sh"
+
+  cmd+=installarchafter
+  
+  if [[ ${norestart} ]]
+  then
+    cmd+=" -n"
+  fi
+
+  cat > /home/${USER}/.bash_profile <<EOF
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+${cmd}
+EOF
+fi
 
 mkinitcpio -P
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=${GRUBNAME}

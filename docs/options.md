@@ -75,6 +75,10 @@
 
   Disable automatic restart after finised install
 
+- -N
+  
+  Disable automatic script run after restart
+
 - -d
 
   Set dotfile git repository to download
@@ -82,6 +86,12 @@
 - -D
 
   Set folder for local dotfiles
+
+## Arch install after restart
+
+- -n
+
+  Disable automatic restart after finised install
 
 ## Mount
 
