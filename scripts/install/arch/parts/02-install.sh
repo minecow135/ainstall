@@ -47,6 +47,7 @@ then
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 ${cmd}
 EOF
+  chmod ${USER}:${USER} /home/${USER}/.bash_profile 
 fi
 
 mkinitcpio -P
