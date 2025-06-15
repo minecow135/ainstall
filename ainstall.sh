@@ -108,7 +108,7 @@ export AINSTALL_VERSION scriptrundir script env
 
 case ${part} in
   "archinstall")
-    sh ${scriptrundir}/scripts/install/01-liveboot.sh $@
+    sh ${scriptrundir}/scripts/install/arch/01-liveboot.sh $@
     ;;
   "mount")
     sh ${scriptrundir}/scripts/adm/mount.sh $@

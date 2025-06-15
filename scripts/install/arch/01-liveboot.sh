@@ -538,7 +538,7 @@ sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' ${MOUNT}/etc/sudoers
 sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' ${MOUNT}/etc/sudoers
 
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
-arch-chroot ${MOUNT} sh ${scriptdir}/scripts/install/parts/02-install.sh -u ${user} -p ${pass} -g ${grubname} -t ${timezone}
+arch-chroot ${MOUNT} sh ${scriptdir}/scripts/install/arch/parts/02-install.sh -u ${user} -p ${pass} -g ${grubname} -t ${timezone}
 
 if [ ${dotfiles} ]
 then
