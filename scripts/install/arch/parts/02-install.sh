@@ -35,7 +35,7 @@ fi
 useradd -m -G sudo -s /usr/bin/bash ${USER}
 echo ${PASS} | passwd -s ${USER}
 
-if [[ ${autorun} ]]
+if [[ -z ${autorun} ]]
 then
   mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak
   cmd="sh ${scriptrundir}/ainstall.sh"
