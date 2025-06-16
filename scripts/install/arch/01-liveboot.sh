@@ -553,7 +553,14 @@ sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
 
-cmd="sh ${scriptdir}/scripts/install/arch/parts/02-install.sh -r ${scriptrundir} -u ${user} -p ${pass} -g ${grubname} -t ${timezone}"
+cmd="sh ${scriptdir}/ainstall.sh -r ${scriptrundir} -S"
+
+if [[ ${env} ]]
+then
+  cmd+=" -E ${env}"
+fi
+
+cmd+=" installArchCh -u ${user} -p ${pass} -g ${grubname} -t ${timezone}"
 
 if [[ ${norestart} ]]
 then

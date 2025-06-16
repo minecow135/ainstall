@@ -87,7 +87,33 @@
 
   Set folder for local dotfiles
 
-## Arch install after restart
+## Arch install - in new OS
+
+- -g
+
+  Set grub name. This is what the boot option is called
+
+- -t
+
+  Set timezone for the finished installation
+
+- -u
+
+  Set username for the default user
+
+- -p
+
+  Set password for the default user
+
+- -n
+
+  Disable automatic restart after finised install
+
+- -N
+  
+  Disable automatic script run after restart
+
+## Arch install - after restart
 
 - -n
 

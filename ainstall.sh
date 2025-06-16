@@ -110,6 +110,9 @@ case ${part} in
   "archinstall")
     sh ${scriptrundir}/scripts/install/arch/01-liveboot.sh $@
     ;;
+  "installArchCh")
+    sh ${scriptrundir}/scripts/install/arch/ch/run.sh $@
+    ;;
   "installArchAfter")
     sh ${scriptrundir}/scripts/install/arch/after/run.sh $@
     ;;

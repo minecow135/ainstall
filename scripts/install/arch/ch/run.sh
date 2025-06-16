@@ -3,13 +3,12 @@ set -e
 
 while getopts ":r:t:u:p:Ng:" opt; do
   case $opt in
-    r) scriptrundir=$OPTARG ;;
+    g) GRUBNAME=$OPTARG ;;
     t) TIMEZONE=$OPTARG ;;
     u) USER=$OPTARG ;;
     p) PASS=$OPTARG ;;
     n) norestart=true ;;
     N) autorun=true ;;
-    g) GRUBNAME=$OPTARG ;;
     :) echo "ERROR: Option '-$OPTARG' requires an argument" >&2; exit 1 ;;
     ?) echo "ERROR: Invalid option '-$OPTARG' (Valid: r, t, u, p, N, g)" >&2; exit 1 ;;
   esac
