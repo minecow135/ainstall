@@ -44,7 +44,7 @@ then
     cmd+=" -E ${env}"
   fi
 
-  cmd+=" installarchafter"
+  cmd+=" installArchAfter"
 
   if [[ ${norestart} ]]
   then
