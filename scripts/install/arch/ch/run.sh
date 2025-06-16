@@ -34,6 +34,9 @@ fi
 useradd -m -G sudo -s /usr/bin/bash ${USER}
 echo ${PASS} | passwd -s ${USER}
 
+sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' /etc/sudoers
+sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' /etc/sudoers
+
 if [[ -z ${autorun} ]]
 then
   mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak

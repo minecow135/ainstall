@@ -548,9 +548,6 @@ fi
 
 sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' ${MOUNT}/etc/default/grub
 
-sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' ${MOUNT}/etc/sudoers
-sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' ${MOUNT}/etc/sudoers
-
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
 
 cmd="sh ${scriptdir}/ainstall -r ${scriptrundir} -S"
