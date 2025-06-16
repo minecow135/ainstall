@@ -107,8 +107,8 @@ shift
 export AINSTALL_VERSION scriptrundir script env
 
 case ${part} in
-  "archinstall")
-    sh ${scriptrundir}/scripts/install/arch/01-liveboot.sh $@
+  "installArch")
+    sh ${scriptrundir}/scripts/install/arch/run.sh $@
     ;;
   "installArchCh")
     sh ${scriptrundir}/scripts/install/arch/ch/run.sh $@
