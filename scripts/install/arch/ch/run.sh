@@ -37,10 +37,15 @@ echo ${PASS} | passwd -s ${USER}
 if [[ -z ${autorun} ]]
 then
   mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak
-  cmd="sh ${scriptrundir}/ainstall.sh"
+  cmd="sh ${scriptrundir}/ainstall.sh -r ${scriptrundir} -S"
+
+  if [[ ${env} ]]
+  then
+    cmd+=" -E ${env}"
+  fi
 
   cmd+=" installarchafter"
-  
+
   if [[ ${norestart} ]]
   then
     cmd+=" -n"
