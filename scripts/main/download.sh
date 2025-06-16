@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy git
+sudo pacman -S --noconfirm --needed git
 git clone https://git.awdawd.eu/awd/ainstall /opt/ainstall
 cd /opt/ainstall
 
