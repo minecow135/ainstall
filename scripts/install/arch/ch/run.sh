@@ -34,6 +34,9 @@ fi
 useradd -m -G sudo -s /usr/bin/bash ${USER}
 echo ${PASS} | passwd -s ${USER}
 
+useradd -md ${scriptrundir}/home -G wheel -s /usr/bin/bash ainstall
+passwd -d ainstall
+
 sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' /etc/sudoers
 sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' /etc/sudoers
 
@@ -54,7 +57,7 @@ then
     cmd+=" -n"
   fi
 
-  cat > /home/${USER}/.bash_profile <<EOF
+  cat > ${scriptrundir}/home/.bash_profile <<EOF
 #
 # ~/.bash_profile
 #
@@ -63,6 +66,14 @@ then
 ${cmd}
 EOF
   chown ${USER}:${USER} /home/${USER}/.bash_profile 
+  cat > /etc/systemd/system/getty@tty1.service.d/override.conf <<EOF
+[Service]
+ExecStart=
+ExecStart=/usr/bin/agetty --autologin ainstall --noclear %I 38400 linux
+Type=simple
+EOF
+else
+  passwd -l ainstall
 fi
 
 mkinitcpio -P
