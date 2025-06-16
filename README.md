@@ -2,6 +2,12 @@
 
 Arch install script with app and dotfile install
 
+## Install
+
+```sh
+curl -sSl ainstall.awdawd.eu | sh
+```
+
 ## Documentation
 
 ### For command line options, see [options.md](docs/options.md)
