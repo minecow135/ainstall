@@ -43,6 +43,7 @@ sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL
 if [[ -z ${autorun} ]]
 then
   mv ${scriptrundir}/home/.bash_profile ${scriptrundir}/home/.bash_profile.bak
+  touch ${scriptrundir}/home/.bash_profile
   cmd="sh ${scriptrundir}/ainstall -r ${scriptrundir} -S"
 
   if [[ ${env} ]]
@@ -66,6 +67,8 @@ then
 ${cmd}
 EOF
   chown ${USER}:${USER} /home/${USER}/.bash_profile 
+  mkdir -p /etc/systemd/system/getty@tty1.service.d/
+  touch /etc/systemd/system/getty@tty1.service.d/override.conf
   cat > /etc/systemd/system/getty@tty1.service.d/override.conf <<EOF
 [Service]
 ExecStart=
