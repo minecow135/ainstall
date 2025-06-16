@@ -553,7 +553,7 @@ sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}
 
-cmd="sh ${scriptdir}/ainstall.sh -r ${scriptrundir} -S"
+cmd="sh ${scriptdir}/ainstall -r ${scriptrundir} -S"
 
 if [[ ${env} ]]
 then
