@@ -1,7 +1,7 @@
 #!/bin/sh
 #set -e
 
-while getopts ":r:t:u:p:Ng:" opt; do
+while getopts ":r:t:u:p:nNg:" opt; do
   case $opt in
     g) GRUBNAME=$OPTARG ;;
     t) TIMEZONE=$OPTARG ;;
