@@ -42,7 +42,7 @@ sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
 if [[ -z ${autorun} ]]
 then
-  mv /home/${USER}/.bash_profile /home/${USER}/.bash_profile.bak
+  mv ${scriptrundir}/home/.bash_profile ${scriptrundir}/home/.bash_profile.bak
   cmd="sh ${scriptrundir}/ainstall -r ${scriptrundir} -S"
 
   if [[ ${env} ]]
