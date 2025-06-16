@@ -19,7 +19,7 @@ curl -sSL https://git.awdawd.eu/awd/ainstall/raw/branch/main/scripts/main/downlo
 ### From github with domain
 
 ```sh
-curl -sSL https://ainstall.awdawd.eu/2 | sh
+curl -sSL ainstall.awdawd.eu/2 | sh
 ```
 
 ### From github
