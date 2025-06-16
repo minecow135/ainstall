@@ -57,8 +57,14 @@ then
   }
 elif [[ $script ]]
 then
+  if [[ ${scriptrundir} ]]
+  then
+    dir=${scriptrundir}
+  else
+    dir="/opt/ainstall"
+  fi
   {
-    source ./config/defaults.env
+    source ${dir}/config/defaults.env
   } || {
     echo "ERROR 30: Default env file import failed" >&2; exit 30
   }
