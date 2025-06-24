@@ -15,7 +15,7 @@ sleep 3
 sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf
 sudo passwd -l ainstall
 
-if [[ -z ${NORESTART} ]]
+if [ -z ${NORESTART} ]
 then
   reboot
 fi
