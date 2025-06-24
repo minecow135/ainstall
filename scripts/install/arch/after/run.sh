@@ -12,7 +12,7 @@ done
 echo "AAAAAAAAAA"
 sleep 3
 
-rm /etc/systemd/system/getty@tty1.service.d/override.conf
+sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf
 passwd -l ainstall
 
 if [[ -z ${NORESTART} ]]
