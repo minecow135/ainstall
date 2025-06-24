@@ -546,6 +546,11 @@ then
   sed -i "s/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"cryptdevice=\/dev\/disk\/by-uuid\/${driveuuid}:root root=\/dev\/mapper\/root /" ${MOUNT}/etc/default/grub
 fi
 
+cat >>${MOUNT}/etc/sudoers.d/10-ainstall <<EOF
+%sudo ALL=(ALL:ALL) ALL
+%wheel	ALL=(ALL:ALL) NOPASSWD: ALL
+EOF
+
 sed -i '/GRUB_DISABLE_OS_PROBER=/c\GRUB_DISABLE_OS_PROBER=false' ${MOUNT}/etc/default/grub
 
 cp -r ${scriptrundir} ${MOUNT}/${scriptdir}

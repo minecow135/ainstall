@@ -37,9 +37,6 @@ echo ${PASS} | passwd -s ${USER}
 useradd -md ${scriptrundir}/home -G wheel -s /usr/bin/bash ainstall
 passwd -d ainstall
 
-sed -i '/%sudo	ALL=(ALL:ALL) ALL/c\%sudo ALL=(ALL:ALL) ALL' /etc/sudoers
-sed -i '/%wheel	ALL=(ALL:ALL) NOPASSWD: ALL/c\%wheel ALL=(ALL:ALL) NOPASSWD: ALL' /etc/sudoers
-
 if [[ -z ${autorun} ]]
 then
   mv ${scriptrundir}/home/.bash_profile ${scriptrundir}/home/.bash_profile.bak
