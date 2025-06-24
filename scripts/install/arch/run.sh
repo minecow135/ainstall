@@ -27,7 +27,6 @@ done
 ##################################### STATIC VARIABLES #####################################
 
 MOUNT=/mnt/os
-DOTFILEDEST=${scriptrundir}/dots
 
 ##################################### GLOBAL SET VARIABLES #####################################
 
@@ -70,6 +69,22 @@ then
 fi
 
 # Check if dotfiles valid
+DOTFILEDEST=${scriptrundir}/dots/${user}/
+
+# Get user
+
+if [[ -z ${user} ]]
+then
+  if [[ ${ENV_INSTALL_USER} ]]
+  then
+    user=${ENV_INSTALL_USER}
+  elif [[ -z ${script} ]]
+  then
+    echo "INPUT user"
+  else
+    echo "ERROR 158: Username not set (-u)" >&2; exit 158
+  fi
+fi
 
 if [ ${dotfilegit} ]
 then
@@ -342,21 +357,6 @@ filesys=$(echo "$filesys" | tr '[:upper:]' '[:lower:]')
 if [[ ! ${filesystems[*]} =~ (^|[[:space:]])"$filesys"($|[[:space:]]) ]];
 then
   echo "ERROR 177: Filesys not valid (-f)" >&2; exit 177
-fi
-
-# Get user
-
-if [[ -z ${user} ]]
-then
-  if [[ ${ENV_INSTALL_USER} ]]
-  then
-    user=${ENV_INSTALL_USER}
-  elif [[ -z ${script} ]]
-  then
-    echo "INPUT user"
-  else
-    echo "ERROR 158: Username not set (-u)" >&2; exit 158
-  fi
 fi
 
 # Get pass
