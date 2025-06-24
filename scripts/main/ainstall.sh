@@ -122,6 +122,11 @@ case ${part} in
   "installArchAfter")
     sh ${scriptrundir}/scripts/install/arch/after/run.sh $@
     ;;
+
+  "appInstall")
+    sh ${scriptrundir}/scripts/appinstall/run.sh $@
+    ;;
+    
   "mount")
     sh ${scriptrundir}/scripts/adm/mount.sh $@
     ;;
