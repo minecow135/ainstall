@@ -37,6 +37,8 @@ echo ${PASS} | passwd -s ${USER}
 useradd -md ${scriptrundir}/home -G wheel -s /usr/bin/bash ainstall
 passwd -d ainstall
 
+chown -R ainstall:ainstall ${scriptrundir}
+
 if [[ -z ${autorun} ]]
 then
   mv ${scriptrundir}/home/.bash_profile ${scriptrundir}/home/.bash_profile.bak
