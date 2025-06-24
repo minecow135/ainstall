@@ -48,16 +48,16 @@ PATCH=$(echo $AINSTALL_VERSION | tr -d "v" | cut -d "." -f3)
 
 ##################################### LOAD ENV FILE #####################################
 
-if [[ ${env} ]]
+if [ ${env} ]
 then
   {
     source ${env}
   } || {
     echo "ERROR 31: Env file import failed" >&2; exit 31
   }
-elif [[ $script ]]
+elif [ $script ]
 then
-  if [[ ${scriptrundir} ]]
+  if [ ${scriptrundir} ]
   then
     dir=${scriptrundir}
   else
@@ -78,12 +78,12 @@ fi
 
 # Get scriptrundir
 
-if [[ -z ${scriptrundir} ]]
+if [ -z ${scriptrundir} ]
 then
-  if [[ ${ENV_INSTALL_SCRIPTRUNDIR} ]]
+  if [ ${ENV_INSTALL_SCRIPTRUNDIR} ]
   then
     scriptrundir=${ENV_INSTALL_SCRIPTRUNDIR}
-  elif [[ -z ${script} ]]
+  elif [ -z ${script} ]
   then
     echo "INPUT scriptrundir"
   else
@@ -93,7 +93,7 @@ fi
 
 # Check if scriptrundir exists
 
-if [[ -d ${scriptrundir} ]]
+if [ -d ${scriptrundir} ]
 then
   scriptrundir=$(readlink -f ${scriptrundir})
 else
